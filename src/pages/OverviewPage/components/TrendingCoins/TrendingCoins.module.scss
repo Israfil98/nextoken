@@ -1,0 +1,73 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.section {
+  margin-bottom: $space-xl;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  margin-bottom: $space-base;
+}
+
+.headerIcon {
+  color: var(--text-tertiary);
+}
+
+.title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: var(--text-primary);
+}
+
+.row {
+  display: flex;
+  gap: $space-sm;
+  overflow-x: auto;
+  padding-bottom: $space-sm;
+
+  @include styled-scrollbar;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  padding: $space-sm $space-md;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-lg;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: border-color $transition-fast;
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+}
+
+.chipImage {
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-full;
+}
+
+.chipName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--text-primary);
+}
+
+.gain {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: var(--color-gain);
+}
+
+.loss {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: var(--color-loss);
+}

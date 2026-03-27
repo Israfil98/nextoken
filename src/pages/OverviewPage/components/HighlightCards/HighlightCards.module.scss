@@ -1,0 +1,82 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-base;
+  margin-bottom: $space-xl;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include xl {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-lg;
+  padding: $space-lg;
+  transition: border-color $transition-fast;
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  margin-bottom: $space-base;
+}
+
+.coinImage {
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-full;
+}
+
+.cardLabel {
+  font-size: $font-size-xs;
+  color: var(--text-tertiary);
+  margin-bottom: $space-xs;
+}
+
+.coinName {
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: var(--text-primary);
+}
+
+.symbol {
+  color: var(--text-tertiary);
+  font-weight: $font-weight-regular;
+  margin-left: $space-xs;
+}
+
+.cardBody {
+  @include flex-between;
+}
+
+.price {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--text-primary);
+}
+
+.gain {
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: var(--color-gain);
+}
+
+.loss {
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: var(--color-loss);
+}

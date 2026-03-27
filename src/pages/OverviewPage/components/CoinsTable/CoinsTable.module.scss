@@ -1,0 +1,148 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.section {
+  margin-bottom: $space-xl;
+}
+
+.header {
+  @include flex-between;
+  margin-bottom: $space-base;
+}
+
+.title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: var(--text-primary);
+}
+
+.viewAll {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-accent);
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// --- Table ---
+.tableWrapper {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-lg;
+  overflow-x: auto;
+
+  @include styled-scrollbar;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+
+  th,
+  td {
+    padding: $space-md $space-base;
+    text-align: left;
+  }
+
+  th {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+.row {
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: var(--bg-tertiary);
+  }
+
+  &:not(:last-child) td {
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+// --- Cells ---
+.rank {
+  color: var(--text-tertiary);
+  font-size: $font-size-sm;
+  width: 40px;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.coinImage {
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-full;
+  flex-shrink: 0;
+}
+
+.coinName {
+  font-weight: $font-weight-medium;
+  color: var(--text-primary);
+}
+
+.symbol {
+  color: var(--text-tertiary);
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+}
+
+.right {
+  text-align: right;
+}
+
+.thRank {
+  width: 40px;
+}
+
+.thName {
+  min-width: 160px;
+}
+
+.thRight {
+  text-align: right;
+}
+
+.gain {
+  color: var(--color-gain);
+  font-weight: $font-weight-medium;
+}
+
+.loss {
+  color: var(--color-loss);
+  font-weight: $font-weight-medium;
+}
+
+// --- Responsive column hiding ---
+.hideSm {
+  display: none;
+
+  @include md {
+    display: table-cell;
+  }
+}
+
+.hideMd {
+  display: none;
+
+  @include lg {
+    display: table-cell;
+  }
+}
