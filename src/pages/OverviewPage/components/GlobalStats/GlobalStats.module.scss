@@ -1,0 +1,37 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: $space-lg;
+  padding: $space-sm $space-base;
+  margin-bottom: $space-lg;
+  font-size: $font-size-xs;
+  color: var(--text-secondary);
+  overflow-x: auto;
+  white-space: nowrap;
+
+  @include styled-scrollbar;
+}
+
+.stat {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
+
+  strong {
+    color: var(--text-primary);
+    font-weight: $font-weight-medium;
+  }
+}
+
+.gain {
+  color: var(--color-gain);
+  font-weight: $font-weight-medium;
+}
+
+.loss {
+  color: var(--color-loss);
+  font-weight: $font-weight-medium;
+}

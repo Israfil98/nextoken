@@ -7,12 +7,12 @@
 
 .main {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   transition: margin-left $transition-base;
 
-  // Mobile: no margin (sidebar is an overlay)
   margin-left: 0;
 
-  // Desktop: shift right to make room for sidebar
   @include lg {
     margin-left: $sidebar-width-expanded;
   }
@@ -31,10 +31,17 @@
 }
 
 .content {
-  padding: $space-lg;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $space-xl $space-lg;
   max-width: 1400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 
   @include lg {
-    padding: $space-xl;
+    padding: $space-2xl $space-xl;
   }
 }
