@@ -1,0 +1,68 @@
+@use 'variables' as *;
+
+// --- Responsive Breakpoint Mixins ---
+// Mobile-first: base styles = mobile, mixins add styles for larger screens.
+// Usage: @include md { display: flex; }
+@mixin sm {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// --- Flexbox Shortcuts ---
+// These save repetitive flex declarations.
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// --- Truncate Text ---
+// Clips long text with "..." — useful for coin names in narrow columns.
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// --- Scrollbar Styling ---
+// Thin, subtle scrollbar that matches the theme.
+@mixin styled-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: $radius-full;
+  }
+}

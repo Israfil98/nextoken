@@ -1,0 +1,41 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.topbar {
+  @include flex-between;
+  position: sticky;
+  top: 0;
+  height: 56px;
+  padding: 0 $space-base;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  z-index: $z-navbar;
+
+  // Hidden on desktop — sidebar handles navigation
+  @include lg {
+    display: none;
+  }
+}
+
+.menuBtn,
+.themeBtn {
+  @include flex-center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-md;
+  color: var(--text-secondary);
+  transition:
+    background-color $transition-fast,
+    color $transition-fast;
+
+  &:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+}
+
+.logo {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+}

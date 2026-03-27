@@ -1,0 +1,40 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.layout {
+  min-height: 100vh;
+}
+
+.main {
+  min-height: 100vh;
+  transition: margin-left $transition-base;
+
+  // Mobile: no margin (sidebar is an overlay)
+  margin-left: 0;
+
+  // Desktop: shift right to make room for sidebar
+  @include lg {
+    margin-left: $sidebar-width-expanded;
+  }
+}
+
+.sidebarCollapsed {
+  @include lg {
+    margin-left: $sidebar-width-collapsed;
+  }
+}
+
+.sidebarExpanded {
+  @include lg {
+    margin-left: $sidebar-width-expanded;
+  }
+}
+
+.content {
+  padding: $space-lg;
+  max-width: 1400px;
+
+  @include lg {
+    padding: $space-xl;
+  }
+}

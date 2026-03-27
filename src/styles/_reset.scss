@@ -1,0 +1,46 @@
+@use 'modern-normalize/modern-normalize.css' as *;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Smooth scrolling for anchor links. Respects user preference
+// for reduced motion — some users get motion sickness from smooth scroll.
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+// Make images responsive by default — never overflow their container.
+img {
+  max-width: 100%;
+  display: block;
+}
+
+// Remove default button styles so we style from scratch.
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+// Remove default list styles — we'll add them back when needed.
+ul,
+ol {
+  list-style: none;
+}
+
+// Remove default link styles.
+a {
+  text-decoration: none;
+  color: inherit;
+}
