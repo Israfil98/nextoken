@@ -1,0 +1,79 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// THEME SYSTEM
+// ============================================
+// Default: light theme. CSS custom properties are set on :root.
+// When [data-theme="dark"] is on <html>, the dark values override.
+// Components use var(--bg-primary), var(--text-primary), etc.
+// and they automatically adapt to whichever theme is active.
+
+:root {
+  // Light theme (default)
+  --bg-primary: #{$light-bg-primary};
+  --bg-secondary: #{$light-bg-secondary};
+  --bg-tertiary: #{$light-bg-tertiary};
+  --text-primary: #{$light-text-primary};
+  --text-secondary: #{$light-text-secondary};
+  --text-tertiary: #{$light-text-tertiary};
+  --border-color: #{$light-border};
+
+  // Semantic colors (constant)
+  --color-gain: #{$color-gain};
+  --color-loss: #{$color-loss};
+  --color-accent: #{$color-accent};
+  --color-brand: #{$color-brand};
+}
+
+[data-theme='dark'] {
+  --bg-primary: #{$dark-bg-primary};
+  --bg-secondary: #{$dark-bg-secondary};
+  --bg-tertiary: #{$dark-bg-tertiary};
+  --text-primary: #{$dark-text-primary};
+  --text-secondary: #{$dark-text-secondary};
+  --text-tertiary: #{$dark-text-tertiary};
+  --border-color: #{$dark-border};
+}
+
+// ============================================
+// BASE STYLES
+// ============================================
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+
+  // Enable tabular (monospaced) numbers globally.
+  // This makes all digits the same width so columns align.
+  font-variant-numeric: tabular-nums;
+
+  // Smooth font rendering on macOS.
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @include styled-scrollbar;
+}
+
+// --- Utility Classes ---
+// A small set of reusable classes for common patterns.
+// Not a full utility framework — just the ones we'll use often.
+.text-gain {
+  color: var(--color-gain);
+}
+
+.text-loss {
+  color: var(--color-loss);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-tertiary {
+  color: var(--text-tertiary);
+}

@@ -1,9 +1,6 @@
-@use 'modern-normalize/modern-normalize.css' as *;
-
 // NexToken — Global Styles
+// Order matters: variables and mixins first, then reset, then base.
+// Later files can use tokens from earlier files.
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@use 'styles/reset';
+@use 'styles/base';

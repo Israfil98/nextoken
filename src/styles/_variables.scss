@@ -1,0 +1,99 @@
+// ============================================
+// DESIGN TOKENS — NexToken Design System
+// ============================================
+
+// --- Breakpoints ---
+// Used in our responsive mixins. These match common device widths.
+// Mobile-first: base styles = mobile, then layer on larger screens.
+$breakpoint-sm: 480px; // Large phones
+$breakpoint-md: 768px; // Tablets
+$breakpoint-lg: 1024px; // Small laptops
+$breakpoint-xl: 1280px; // Desktops
+
+// --- Sidebar ---
+$sidebar-width-expanded: 240px;
+$sidebar-width-collapsed: 72px;
+
+// --- Typography ---
+// Inter has tabular numbers (all digits same width),
+// which is critical for data tables where numbers must align in columns.
+$font-family-base:
+  'Inter',
+  -apple-system,
+  BlinkMacSystemFont,
+  sans-serif;
+
+$font-size-xs: 0.75rem; // 12px — captions, labels
+$font-size-sm: 0.8125rem; // 13px — secondary text, table cells
+$font-size-base: 0.875rem; // 14px — body text (dashboards use smaller base than marketing sites)
+$font-size-md: 1rem; // 16px — headings, emphasis
+$font-size-lg: 1.25rem; // 20px — page titles
+$font-size-xl: 1.5rem; // 24px — hero numbers, stat cards
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// --- Spacing ---
+// Consistent spacing scale. Use these instead of arbitrary pixel values.
+$space-xs: 0.25rem; // 4px
+$space-sm: 0.5rem; // 8px
+$space-md: 0.75rem; // 12px
+$space-base: 1rem; // 16px
+$space-lg: 1.5rem; // 24px
+$space-xl: 2rem; // 32px
+$space-2xl: 3rem; // 48px
+
+// --- Border Radius ---
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-full: 9999px; // Pills, avatars
+
+// --- Transitions ---
+// Consistent timing across the app. Same easing = cohesive feel.
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;
+$transition-slow: 350ms ease;
+
+// --- Z-Index Scale ---
+// Centralized so layers never conflict.
+$z-sidebar: 100;
+$z-navbar: 200;
+$z-overlay: 300;
+$z-modal: 400;
+
+// ============================================
+// COLOR SYSTEM — Light & Dark Themes
+// ============================================
+// We use CSS custom properties (variables) for colors so they
+// can swap at runtime when toggling dark mode. SCSS variables
+// are compile-time only — they can't change after the CSS is built.
+// That's why breakpoints/spacing use SCSS vars (they don't change)
+// but colors use CSS vars (they do change).
+
+// --- Semantic Colors (constant across themes) ---
+$color-gain: #16c784; // Green — positive price change
+$color-loss: #ea3943; // Red — negative price change
+$color-accent: #3861fb; // Blue — links, active states, CTAs
+$color-brand: #00d4aa; // Teal — NexToken brand
+
+// --- Light Theme ---
+$light-bg-primary: #ffffff; // Cards, surfaces
+$light-bg-secondary: #f8fafd; // Page background
+$light-bg-tertiary: #eff2f5; // Hover states, subtle fills
+$light-text-primary: #222531; // Headings, primary text
+$light-text-secondary: #58667e; // Body text, labels
+$light-text-tertiary: #808a9d; // Captions, hints
+$light-border: #eff2f5; // Dividers, card borders
+
+// --- Dark Theme ---
+$dark-bg-primary: #171d2b; // Cards, surfaces
+$dark-bg-secondary: #0d1421; // Page background
+$dark-bg-tertiary: #1e2738; // Hover states, subtle fills
+$dark-text-primary: #ffffff; // Headings, primary text
+$dark-text-secondary: #a1a7bb; // Body text, labels
+$dark-text-tertiary: #6b7280; // Captions, hints
+$dark-border: #1e2738; // Dividers, card borders
