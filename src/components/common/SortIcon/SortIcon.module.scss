@@ -1,0 +1,10 @@
+@use '../../../styles/variables' as *;
+
+.inactive {
+  color: var(--text-tertiary);
+  opacity: 0.5;
+}
+
+.active {
+  color: var(--color-accent);
+}

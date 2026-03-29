@@ -1,0 +1,90 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  width: 100%;
+}
+
+// --- Header ---
+.header {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $space-base;
+  margin-bottom: $space-lg;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+}
+
+.searchWrapper {
+  position: relative;
+  width: 100%;
+
+  @include sm {
+    width: 260px;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: $space-md;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: $space-sm $space-base $space-sm $space-xl;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-md;
+  color: var(--text-primary);
+  font-size: $font-size-sm;
+  font-family: inherit;
+  outline: none;
+  transition: border-color $transition-fast;
+
+  &::placeholder {
+    color: var(--text-tertiary);
+  }
+
+  &:focus {
+    border-color: var(--color-accent);
+  }
+}
+
+// --- Table ---
+.tableWrapper {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-lg;
+  overflow-x: auto;
+
+  @include styled-scrollbar;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+
+  th,
+  td {
+    padding: $space-sm $space-base;
+    text-align: left;
+  }
+}
+
+// --- Loading & Error ---
+.loading,
+.error {
+  @include flex-center;
+  padding: $space-2xl;
+  color: var(--text-secondary);
+  font-size: $font-size-base;
+}

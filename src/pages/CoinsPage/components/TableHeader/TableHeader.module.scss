@@ -1,0 +1,69 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+th {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+}
+
+.sortable {
+  cursor: pointer;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.thContent {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
+}
+
+// Column alignment classes
+.rank {
+  width: 48px;
+}
+
+.name {
+  min-width: 180px;
+}
+
+.right {
+  text-align: right;
+}
+
+// Responsive hiding — must match CoinRow
+.hideSm {
+  display: none;
+  @include md {
+    display: table-cell;
+  }
+}
+
+.hideMd {
+  display: none;
+  @include lg {
+    display: table-cell;
+  }
+}
+
+.hideLg {
+  display: none;
+  @include xl {
+    display: table-cell;
+  }
+}
+
+.hideXl {
+  display: none;
+  @media (min-width: 1400px) {
+    display: table-cell;
+  }
+}

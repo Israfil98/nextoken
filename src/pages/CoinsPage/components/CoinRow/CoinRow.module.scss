@@ -1,0 +1,87 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.row {
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: var(--bg-tertiary);
+  }
+
+  &:not(:last-child) td {
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+.rank {
+  color: var(--text-tertiary);
+  font-size: $font-size-sm;
+  width: 48px;
+}
+
+.nameCell {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  min-width: 180px;
+}
+
+.coinImage {
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-full;
+  flex-shrink: 0;
+}
+
+.coinName {
+  font-weight: $font-weight-medium;
+  color: var(--text-primary);
+}
+
+.symbol {
+  color: var(--text-tertiary);
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+}
+
+.right {
+  text-align: right;
+}
+
+.gain {
+  color: var(--color-gain);
+  font-weight: $font-weight-medium;
+}
+
+.loss {
+  color: var(--color-loss);
+  font-weight: $font-weight-medium;
+}
+
+.hideSm {
+  display: none;
+  @include md {
+    display: table-cell;
+  }
+}
+
+.hideMd {
+  display: none;
+  @include lg {
+    display: table-cell;
+  }
+}
+
+.hideLg {
+  display: none;
+  @include xl {
+    display: table-cell;
+  }
+}
+
+.hideXl {
+  display: none;
+  @media (min-width: 1400px) {
+    display: table-cell;
+  }
+}

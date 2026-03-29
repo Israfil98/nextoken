@@ -1,0 +1,50 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.pagination {
+  @include flex-center;
+  gap: $space-xs;
+  padding: $space-lg 0;
+}
+
+.navBtn,
+.pageBtn {
+  @include flex-center;
+  min-width: 36px;
+  height: 36px;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--text-secondary);
+  transition:
+    background-color $transition-fast,
+    color $transition-fast;
+
+  &:hover:not(:disabled) {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.pageBtn.active {
+  background-color: var(--color-accent);
+  color: #ffffff;
+
+  &:hover {
+    background-color: var(--color-accent);
+    color: #ffffff;
+  }
+}
+
+.ellipsis {
+  @include flex-center;
+  min-width: 36px;
+  height: 36px;
+  color: var(--text-tertiary);
+  font-size: $font-size-sm;
+}
