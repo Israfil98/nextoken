@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import { Sparkline } from '../../../../components/common';
 import {
   formatLargeNumber,
@@ -16,8 +17,18 @@ const CoinRow = ({ coin }: ICoinRowProps) => {
   const change24h = coin.price_change_percentage_24h;
   const change7d = coin.price_change_percentage_7d_in_currency;
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/coins/${coin.id}`);
+  };
+
   return (
-    <tr className={styles.row}>
+    <tr
+      className={styles.row}
+      onClick={handleClick}
+      style={{ cursor: 'pointer' }}
+    >
       <td className={styles.rank}>{coin.market_cap_rank}</td>
       <td>
         <div className={styles.nameCell}>

@@ -54,3 +54,40 @@ export interface IGlobalData {
     market_cap_change_percentage_24h_usd: number;
   };
 }
+
+// Matches CoinGecko's /coins/{id} response shape
+export interface ICoinDetail {
+  id: string;
+  symbol: string;
+  name: string;
+  image: {
+    large: string;
+  };
+  market_cap_rank: number;
+  market_data: {
+    current_price: { usd: number };
+    price_change_percentage_24h: number;
+    price_change_percentage_7d: number;
+    price_change_percentage_30d: number;
+    price_change_percentage_1y: number;
+    market_cap: { usd: number };
+    total_volume: { usd: number };
+    circulating_supply: number;
+    total_supply: number | null;
+    max_supply: number | null;
+    ath: { usd: number };
+    ath_change_percentage: { usd: number };
+    ath_date: { usd: string };
+    atl: { usd: number };
+    atl_change_percentage: { usd: number };
+    atl_date: { usd: string };
+  };
+  description: {
+    en: string;
+  };
+}
+
+// Matches CoinGecko's /coins/{id}/market_chart response shape
+export interface ICoinChart {
+  prices: [number, number][]; // [timestamp, price][]
+}

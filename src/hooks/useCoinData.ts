@@ -1,5 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchCoins, fetchGlobalData, fetchTrendingCoins } from '../lib/api';
+import {
+  fetchCoinChart,
+  fetchCoinDetail,
+  fetchCoins,
+  fetchGlobalData,
+  fetchTrendingCoins,
+} from '../lib/api';
 
 // Hook for the main coins list
 export const useCoins = (page = 1, perPage = 20) => {
@@ -22,5 +28,23 @@ export const useGlobalData = () => {
   return useQuery({
     queryKey: ['global'],
     queryFn: fetchGlobalData,
+  });
+};
+
+// Hook for single coin detail
+export const useCoinDetail = (id: string) => {
+  return useQuery({
+    queryKey: ['coin', id],
+    queryFn: () => fetchCoinDetail(id),
+    enabled: !!id,
+  });
+};
+
+// Hook for coin price chart data
+export const useCoinChart = (id: string, days: number) => {
+  return useQuery({
+    queryKey: ['chart', id, days],
+    queryFn: () => fetchCoinChart(id, days),
+    enabled: !!id,
   });
 };
