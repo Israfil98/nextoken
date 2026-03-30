@@ -1,0 +1,87 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl;
+}
+
+.statsBar {
+  display: flex;
+  gap: $space-lg;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-base;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include xl {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-lg;
+  padding: $space-lg;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  margin-bottom: $space-base;
+}
+
+.cardHeaderText {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.cardBody {
+  @include flex-between;
+}
+
+.trendingSection {
+  display: flex;
+  flex-direction: column;
+  gap: $space-base;
+}
+
+.trendingRow {
+  display: flex;
+  gap: $space-sm;
+}
+
+.tableSection {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-lg;
+  padding: $space-lg;
+}
+
+.tableHeader {
+  @include flex-between;
+  margin-bottom: $space-lg;
+}
+
+.tableBody {
+  display: flex;
+  flex-direction: column;
+  gap: $space-base;
+}
+
+.tableRow {
+  display: flex;
+  align-items: center;
+  gap: $space-lg;
+  padding: $space-sm 0;
+}

@@ -7,6 +7,7 @@ import { useSort } from '../../hooks/useSort';
 import type { ICoin } from '../../types/coin';
 import styles from './CoinsPage.module.scss';
 import { CoinRow } from './components/CoinRow';
+import { CoinsTableSkeleton } from './components/CoinsTableSkeleton';
 import { TableHeader } from './components/TableHeader';
 
 const COINS_PER_PAGE = 15;
@@ -118,7 +119,7 @@ const CoinsPage = () => {
 
       <div className={styles.tableWrapper}>
         {isLoading ? (
-          <div className={styles.loading}>Loading...</div>
+          <CoinsTableSkeleton />
         ) : (
           <table className={styles.table}>
             <table className={styles.table}>
