@@ -1,0 +1,165 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  width: 100%;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin-bottom: $space-lg;
+}
+
+// --- Empty State ---
+.empty {
+  @include flex-center;
+  flex-direction: column;
+  gap: $space-base;
+  min-height: 400px;
+  text-align: center;
+}
+
+.emptyIcon {
+  color: var(--text-tertiary);
+}
+
+.emptyTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--text-primary);
+}
+
+.emptyText {
+  font-size: $font-size-base;
+  color: var(--text-secondary);
+}
+
+// --- Table ---
+.tableWrapper {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-lg;
+  overflow-x: auto;
+
+  @include styled-scrollbar;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+
+  th,
+  td {
+    padding: $space-sm $space-base;
+    text-align: left;
+  }
+
+  th {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+.row {
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: var(--bg-tertiary);
+  }
+
+  &:not(:last-child) td {
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+.star {
+  width: 40px;
+}
+
+.thStar {
+  width: 40px;
+}
+
+.thRight {
+  text-align: right;
+}
+
+.rank {
+  color: var(--text-tertiary);
+  font-size: $font-size-sm;
+  width: 48px;
+}
+
+.nameCell {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  min-width: 180px;
+}
+
+.coinImage {
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-full;
+  flex-shrink: 0;
+}
+
+.coinName {
+  font-weight: $font-weight-medium;
+  color: var(--text-primary);
+}
+
+.symbol {
+  color: var(--text-tertiary);
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+}
+
+.right {
+  text-align: right;
+}
+
+.gain {
+  color: var(--color-gain);
+  font-weight: $font-weight-medium;
+}
+
+.loss {
+  color: var(--color-loss);
+  font-weight: $font-weight-medium;
+}
+
+.loading {
+  @include flex-center;
+  padding: $space-2xl;
+  color: var(--text-secondary);
+}
+
+// --- Responsive ---
+.hideSm {
+  display: none;
+  @include md {
+    display: table-cell;
+  }
+}
+
+.hideMd {
+  display: none;
+  @include lg {
+    display: table-cell;
+  }
+}
+
+.hideLg {
+  display: none;
+  @include xl {
+    display: table-cell;
+  }
+}

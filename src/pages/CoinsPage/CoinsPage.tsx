@@ -14,6 +14,8 @@ const TOTAL_COINS = 100; // CoinGecko free tier practical limit
 
 // Column definitions — keeps the table header DRY
 const COLUMNS = [
+  { key: 'star', label: '', sortable: false, className: 'star' },
+  { key: 'market_cap_rank', label: '#', sortable: true, className: 'rank' },
   { key: 'market_cap_rank', label: '#', sortable: true, className: 'rank' },
   { key: 'name', label: 'Name', sortable: true, className: 'name' },
   { key: 'current_price', label: 'Price', sortable: true, className: 'right' },

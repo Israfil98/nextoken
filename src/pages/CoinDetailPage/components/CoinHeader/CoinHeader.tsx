@@ -1,5 +1,6 @@
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router';
+import { WatchlistButton } from '../../../../components/common';
 import { formatPercentage, formatPrice } from '../../../../lib/formatters';
 import type { ICoinDetail } from '../../../../types/coin';
 import styles from './CoinHeader.module.scss';
@@ -32,6 +33,7 @@ const CoinHeader = ({ coin }: ICoinHeaderProps) => {
             <h1 className={styles.name}>{coin.name}</h1>
             <span className={styles.symbol}>{coin.symbol.toUpperCase()}</span>
             <span className={styles.rank}>#{coin.market_cap_rank}</span>
+            <WatchlistButton coinId={coin.id} />
           </div>
           <div className={styles.priceRow}>
             <span className={styles.price}>{formatPrice(price)}</span>

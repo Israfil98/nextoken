@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { Sparkline } from '../../../../components/common';
+import { Sparkline, WatchlistButton } from '../../../../components/common';
 import {
   formatLargeNumber,
   formatPercentage,
@@ -29,6 +29,9 @@ const CoinRow = ({ coin }: ICoinRowProps) => {
       onClick={handleClick}
       style={{ cursor: 'pointer' }}
     >
+      <td className={styles.star}>
+        <WatchlistButton coinId={coin.id} />
+      </td>
       <td className={styles.rank}>{coin.market_cap_rank}</td>
       <td>
         <div className={styles.nameCell}>

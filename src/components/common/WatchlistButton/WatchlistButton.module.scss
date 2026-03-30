@@ -1,0 +1,22 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.btn {
+  @include flex-center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-full;
+  color: var(--text-tertiary);
+  transition:
+    color $transition-fast,
+    background-color $transition-fast;
+
+  &:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--color-brand);
+  }
+}
+
+.active {
+  color: var(--color-brand);
+}
