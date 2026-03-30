@@ -1,0 +1,41 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-base;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-lg;
+  padding: $space-base $space-lg;
+}
+
+.label {
+  font-size: $font-size-xs;
+  color: var(--text-tertiary);
+  margin-bottom: $space-xs;
+}
+
+.value {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: var(--text-primary);
+}
+
+.subValue {
+  font-size: $font-size-xs;
+  color: var(--text-secondary);
+  margin-top: $space-xs;
+}

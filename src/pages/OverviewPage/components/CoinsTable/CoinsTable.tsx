@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useCoins } from '../../../../hooks/useCoinData';
 import {
   formatLargeNumber,
@@ -10,6 +10,7 @@ import styles from './CoinsTable.module.scss';
 
 const CoinsTable = () => {
   const { data: coins, isLoading } = useCoins(1, 10);
+  const navigate = useNavigate();
 
   if (isLoading || !coins) return null;
 
@@ -44,7 +45,12 @@ const CoinsTable = () => {
               const is7dPositive = change7d !== null && change7d >= 0;
 
               return (
-                <tr key={coin.id} className={styles.row}>
+                <tr
+                  key={coin.id}
+                  className={styles.row}
+                  onClick={() => navigate(`/coins/${coin.id}`)}
+                  style={{ cursor: 'pointer' }}
+                >
                   <td className={styles.rank}>{coin.market_cap_rank}</td>
                   <td className={styles.name}>
                     <img

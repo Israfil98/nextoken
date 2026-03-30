@@ -1,4 +1,10 @@
-import type { ICoin, IGlobalData, ITrendingCoin } from '../types/coin';
+import type {
+  ICoin,
+  ICoinChart,
+  ICoinDetail,
+  IGlobalData,
+  ITrendingCoin,
+} from '../types/coin';
 
 const BASE_URL = 'https://api.coingecko.com/api/v3';
 
@@ -33,4 +39,22 @@ export const fetchTrendingCoins = (): Promise<{ coins: ITrendingCoin[] }> => {
 // Fetch global market data (total market cap, volume, dominance)
 export const fetchGlobalData = (): Promise<IGlobalData> => {
   return fetchFromApi<IGlobalData>('/global');
+};
+
+// Fetch detailed info for a single coin
+export const fetchCoinDetail = (id: string): Promise<ICoinDetail> => {
+  return fetchFromApi<ICoinDetail>(
+    `/coins/${id}?localization=false&tickers=false&community_data=false&developer_data=false`,
+  );
+};
+
+// Fetch historical price data for charts
+// days: 1, 7, 30, 90, 365
+export const fetchCoinChart = (
+  id: string,
+  days: number,
+): Promise<ICoinChart> => {
+  return fetchFromApi<ICoinChart>(
+    `/coins/${id}/market_chart?vs_currency=usd&days=${days}`,
+  );
 };

@@ -1,0 +1,52 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-lg;
+  padding: $space-lg;
+  margin-bottom: $space-xl;
+}
+
+.rangeButtons {
+  display: flex;
+  gap: $space-xs;
+  margin-bottom: $space-lg;
+}
+
+.rangeBtn {
+  padding: $space-xs $space-md;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--text-secondary);
+  transition:
+    background-color $transition-fast,
+    color $transition-fast;
+
+  &:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+}
+
+.active {
+  background-color: var(--color-accent);
+  color: #ffffff;
+
+  &:hover {
+    background-color: var(--color-accent);
+    color: #ffffff;
+  }
+}
+
+.chart {
+  width: 100%;
+}
+
+.loading {
+  @include flex-center;
+  height: 400px;
+  color: var(--text-secondary);
+}

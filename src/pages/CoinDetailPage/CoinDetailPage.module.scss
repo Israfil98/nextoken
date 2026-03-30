@@ -1,0 +1,14 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  width: 100%;
+}
+
+.loading,
+.error {
+  @include flex-center;
+  min-height: 400px;
+  color: var(--text-secondary);
+  font-size: $font-size-base;
+}
