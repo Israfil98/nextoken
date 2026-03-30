@@ -1,0 +1,69 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: $space-base;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+}
+
+.chart {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-lg;
+  padding: $space-lg;
+}
+
+.rangeButtons {
+  display: flex;
+  gap: $space-xs;
+  margin-bottom: $space-lg;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-base;
+
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.statCard {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-lg;
+  padding: $space-base $space-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}

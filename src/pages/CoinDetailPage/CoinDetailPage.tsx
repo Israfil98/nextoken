@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import { useCoinDetail } from '../../hooks/useCoinData';
 import styles from './CoinDetailPage.module.scss';
+import { CoinDetailSkeleton } from './components/CoinDetailSkeleton';
 import { CoinHeader } from './components/CoinHeader';
 import { PriceChart } from './components/PriceChart';
 import { StatsGrid } from './components/StatsGrid';
@@ -9,9 +10,7 @@ const CoinDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const { data: coin, isLoading, error } = useCoinDetail(id ?? '');
 
-  if (isLoading) {
-    return <div className={styles.loading}>Loading...</div>;
-  }
+  if (isLoading) return <CoinDetailSkeleton />;
 
   if (error || !coin) {
     return (

@@ -8,6 +8,7 @@ import {
   formatPrice,
 } from '../../lib/formatters';
 import { useWatchlistStore } from '../../stores/watchlistStore';
+import { WatchlistSkeleton } from './components/WatchlistSkeleton';
 import styles from './WatchlistPage.module.scss';
 
 const WatchlistPage = () => {
@@ -19,7 +20,9 @@ const WatchlistPage = () => {
   const watchedCoins =
     coins?.filter((coin) => watchlist.includes(coin.id)) ?? [];
 
-  if (!isLoading && watchlist.length === 0) {
+  if (isLoading) return <WatchlistSkeleton />;
+
+  if (watchlist.length === 0) {
     return (
       <div className={styles.empty}>
         <Star size={48} className={styles.emptyIcon} />
@@ -36,83 +39,79 @@ const WatchlistPage = () => {
       <h1 className={styles.title}>Watchlist</h1>
 
       <div className={styles.tableWrapper}>
-        {isLoading ? (
-          <div className={styles.loading}>Loading...</div>
-        ) : (
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th className={styles.thStar}></th>
-                <th>#</th>
-                <th>Name</th>
-                <th className={styles.thRight}>Price</th>
-                <th className={styles.thRight}>24h %</th>
-                <th className={`${styles.thRight} ${styles.hideMd}`}>7d %</th>
-                <th className={`${styles.thRight} ${styles.hideSm}`}>
-                  Market Cap
-                </th>
-                <th className={`${styles.thRight} ${styles.hideLg}`}>
-                  Last 7 Days
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {watchedCoins.map((coin) => {
-                const change24h = coin.price_change_percentage_24h;
-                const change7d = coin.price_change_percentage_7d_in_currency;
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th className={styles.thStar}></th>
+              <th>#</th>
+              <th>Name</th>
+              <th className={styles.thRight}>Price</th>
+              <th className={styles.thRight}>24h %</th>
+              <th className={`${styles.thRight} ${styles.hideMd}`}>7d %</th>
+              <th className={`${styles.thRight} ${styles.hideSm}`}>
+                Market Cap
+              </th>
+              <th className={`${styles.thRight} ${styles.hideLg}`}>
+                Last 7 Days
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {watchedCoins.map((coin) => {
+              const change24h = coin.price_change_percentage_24h;
+              const change7d = coin.price_change_percentage_7d_in_currency;
 
-                return (
-                  <tr
-                    key={coin.id}
-                    className={styles.row}
-                    onClick={() => navigate(`/coins/${coin.id}`)}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <td className={styles.star}>
-                      <WatchlistButton coinId={coin.id} />
-                    </td>
-                    <td className={styles.rank}>{coin.market_cap_rank}</td>
-                    <td>
-                      <div className={styles.nameCell}>
-                        <img
-                          src={coin.image}
-                          alt={coin.name}
-                          className={styles.coinImage}
-                        />
-                        <span className={styles.coinName}>{coin.name}</span>
-                        <span className={styles.symbol}>
-                          {coin.symbol.toUpperCase()}
-                        </span>
-                      </div>
-                    </td>
-                    <td className={styles.right}>
-                      {formatPrice(coin.current_price)}
-                    </td>
-                    <td
-                      className={`${styles.right} ${change24h !== null && change24h >= 0 ? styles.gain : styles.loss}`}
-                    >
-                      {formatPercentage(change24h)}
-                    </td>
-                    <td
-                      className={`${styles.right} ${styles.hideMd} ${change7d !== null && change7d >= 0 ? styles.gain : styles.loss}`}
-                    >
-                      {formatPercentage(change7d)}
-                    </td>
-                    <td className={`${styles.right} ${styles.hideSm}`}>
-                      {formatLargeNumber(coin.market_cap)}
-                    </td>
-                    <td className={`${styles.right} ${styles.hideLg}`}>
-                      <Sparkline
-                        data={coin.sparkline_in_7d.price}
-                        positive={change7d !== null && change7d >= 0}
+              return (
+                <tr
+                  key={coin.id}
+                  className={styles.row}
+                  onClick={() => navigate(`/coins/${coin.id}`)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <td className={styles.star}>
+                    <WatchlistButton coinId={coin.id} />
+                  </td>
+                  <td className={styles.rank}>{coin.market_cap_rank}</td>
+                  <td>
+                    <div className={styles.nameCell}>
+                      <img
+                        src={coin.image}
+                        alt={coin.name}
+                        className={styles.coinImage}
                       />
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        )}
+                      <span className={styles.coinName}>{coin.name}</span>
+                      <span className={styles.symbol}>
+                        {coin.symbol.toUpperCase()}
+                      </span>
+                    </div>
+                  </td>
+                  <td className={styles.right}>
+                    {formatPrice(coin.current_price)}
+                  </td>
+                  <td
+                    className={`${styles.right} ${change24h !== null && change24h >= 0 ? styles.gain : styles.loss}`}
+                  >
+                    {formatPercentage(change24h)}
+                  </td>
+                  <td
+                    className={`${styles.right} ${styles.hideMd} ${change7d !== null && change7d >= 0 ? styles.gain : styles.loss}`}
+                  >
+                    {formatPercentage(change7d)}
+                  </td>
+                  <td className={`${styles.right} ${styles.hideSm}`}>
+                    {formatLargeNumber(coin.market_cap)}
+                  </td>
+                  <td className={`${styles.right} ${styles.hideLg}`}>
+                    <Sparkline
+                      data={coin.sparkline_in_7d.price}
+                      positive={change7d !== null && change7d >= 0}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   );
